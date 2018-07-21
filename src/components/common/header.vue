@@ -4,7 +4,7 @@
     <div class="collapse-btn" @click="collapseChage">
         <i class="el-icon-menu"></i>
     </div>
-    <div class="logo">教务管理系统</div>
+    <div class="logo" @click="collapseChage">项目基础模板</div>
     <div class="header-right">
       <div class="header-user-con">
         <!-- 全屏显示 -->
@@ -115,9 +115,11 @@ export default {
         line-height: 70px;
     }
     .header .logo{
-        float: left;
-        width:250px;
+        /* float: left; */
+        /* width:250px; */
+        display: inline-block;
         line-height: 70px;
+        cursor: pointer;
     }
     .header-right{
         float: right;
