@@ -31,70 +31,62 @@ export default {
       items: [
         {
           icon: 'el-icon-setting',
-          index: 'dashboard',
+          index: 'Home',
           title: '系统首页'
         },
         {
           icon: 'el-icon-date',
           index: '3',
-          title: '教学内容配置',
+          title: 'vue-route的使用',
           subs: [
             {
-              index: 'course',
-              title: '课程列表'
+              index: 'routeChildren',
+              title: '嵌套路由'
             },
             {
-              index: 'create',
-              title: '创建课程'
+              index: 'routeParams',
+              title: '路由传参'
             },
             {
-              index: 'editor_course',
-              title: '编辑课程'
-            },
-            {
-              index: 'preview_course',
-              title: '预览课程'
-            },
-            {
-              index: 'manage_course',
-              title: '管理课程分类'
+              index: 'routeMethods',
+              title: '路由钩子函数'
             }
           ]
         },
         {
           icon: 'el-icon-tickets',
           index: '4',
-          title: '开班排课',
+          title: '组件通信',
           subs: [
             {
-              index: 'schedule',
-              title: '班期列表'
+              index: 'propsEmit',
+              title: 'props和emit的使用'
             },
             {
-              index: 'preview',
-              title: '预览'
+              index: 'refsChild',
+              title: 'refs、children、parents'
             },
             {
-              index: 'course_scheduling',
-              title: '排课'
+              index: 'busUsed',
+              title: '兄弟组件之间方法调用'
             }
           ]
         },
-        {
-          icon: 'el-icon-date',
-          index: '5',
-          title: '课程产品运营',
-          subs: [
-            {
-              index: 'product_list',
-              title: '产品列表'
-            },
-            {
-              index: 'product_detail',
-              title: '产品详情'
-            }
-          ]
-        }
+        // {
+        //   icon: 'el-icon-date',
+        //   index: '5',
+        //   title: '课程产品运营',
+        //   subs: [
+        //     {
+        //       index: 'product_list',
+        //       title: '产品列表'
+        //     },
+        //     {
+        //       index: 'product_detail',
+        //       title: '产品详情'
+        //     }
+        //   ]
+        // }
       ]
     }
   },

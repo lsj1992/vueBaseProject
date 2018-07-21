@@ -29,16 +29,77 @@ export default new Router({
           }
         },
         {
-          path: '/Login',
-          name: 'Login',
-          component: resolve => require(['@/components/Pages/Login.vue'], resolve),
+          path: '/routeChildren',
+          name: 'routeChildren',
+          component: resolve => require(['@/components/Pages/route/parentRoute.vue'], resolve),
           meta: {
-            title: '首页',
-            isUseCache: false, // 结合activated钩子函数中的判断来确定是否去刷新数据
+            title: '嵌套路由',
+            isUseCache: false,
+            keepAlive: false
+          }
+        },
+        {
+          path: '/routeParams',
+          name: 'routeParams',
+          component: resolve => require(['@/components/Pages/route/routeParams.vue'], resolve),
+          meta: {
+            title: '路由传参',
+            isUseCache: false,
+            keepAlive: false
+          }
+        },
+        {
+          path: '/routeMethods',
+          name: 'routeMethods',
+          component: resolve => require(['@/components/Pages/route/routeMethods.vue'], resolve),
+          meta: {
+            title: '路由钩子函数',
+            isUseCache: false,
+            keepAlive: false
+          }
+        },
+        // 状态管理
+        {
+          path: '/propsEmit',
+          name: 'propsEmit',
+          component: resolve => require(['@/components/Pages/vuex/propsEmit.vue'], resolve),
+          meta: {
+            title: 'props和emit的使用',
+            isUseCache: false,
+            keepAlive: false
+          }
+        },
+        {
+          path: '/refsChild',
+          name: 'refsChild',
+          component: resolve => require(['@/components/Pages/vuex/refsChild.vue'], resolve),
+          meta: {
+            title: 'refs、children、parents',
+            isUseCache: false,
+            keepAlive: false
+          }
+        },
+        {
+          path: '/busUsed',
+          name: 'busUsed',
+          component: resolve => require(['@/components/Pages/vuex/busUsed.vue'], resolve),
+          meta: {
+            title: '兄弟组件之间方法调用',
+            isUseCache: false,
             keepAlive: false
           }
         },
       ]
+    },
+    {
+      path: '/Login',
+      name: 'Login',
+      component: resolve => require(['@/components/Pages/Login.vue'], resolve),
+      meta: {
+        title: '首页',
+        isUseCache: false, // 结合activated钩子函数中的判断来确定是否去刷新数据
+        keepAlive: false
+      }
     },
     {
       path: '/HelloWorld',
