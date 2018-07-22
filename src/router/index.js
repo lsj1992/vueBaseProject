@@ -43,7 +43,7 @@ export default new Router({
               name: 'home1',
               component: resolve => require(['@/components/Pages/route/children/home.vue'], resolve),
               meta: {
-                title: '接收路由参数',
+                title: 'query接收路由参数',
                 isUseCache: false,
                 keepAlive: false
               }
@@ -53,7 +53,7 @@ export default new Router({
               name: 'foo',
               component: resolve => require(['@/components/Pages/route/children/foo.vue'], resolve),
               meta: {
-                title: '接收路由参数',
+                title: 'params接收路由参数',
                 isUseCache: false,
                 keepAlive: false
               }
