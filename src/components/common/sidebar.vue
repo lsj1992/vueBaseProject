@@ -39,10 +39,10 @@ export default {
           index: '3',
           title: 'vue-route的使用',
           subs: [
-            {
-              index: 'routeChildren',
-              title: '嵌套路由'
-            },
+            // {
+            //   index: 'routeChildren',
+            //   title: '嵌套路由'
+            // },
             {
               index: 'routeParams',
               title: '路由传参'

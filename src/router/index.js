@@ -28,16 +28,16 @@ export default new Router({
             keepAlive: false
           }
         },
-        {
-          path: '/routeChildren',
-          name: 'routeChildren',
-          component: resolve => require(['@/components/Pages/route/parentRoute.vue'], resolve),
-          meta: {
-            title: '嵌套路由',
-            isUseCache: false,
-            keepAlive: false
-          }
-        },
+        // {
+        //   path: '/routeChildren',
+        //   name: 'routeChildren',
+        //   component: resolve => require(['@/components/Pages/route/parentRoute.vue'], resolve),
+        //   meta: {
+        //     title: '嵌套路由',
+        //     isUseCache: false,
+        //     keepAlive: false
+        //   }
+        // },
         {
           path: '/routeParams',
           name: 'routeParams',
@@ -46,7 +46,29 @@ export default new Router({
             title: '路由传参',
             isUseCache: false,
             keepAlive: false
-          }
+          },
+          children: [
+            {
+              path: '/home1',
+              name: 'home',
+              component: resolve => require(['@/components/Pages/route/children/home.vue'], resolve),
+              meta: {
+                title: '接收路由参数',
+                isUseCache: false,
+                keepAlive: false
+              }
+            }, // No props, no nothing
+            {
+              path: '/foo',
+              name: 'foo',
+              component: resolve => require(['@/components/Pages/route/children/foo.vue'], resolve),
+              meta: {
+                title: '接收路由参数',
+                isUseCache: false,
+                keepAlive: false
+              }
+            }
+          ]
         },
         {
           path: '/routeMethods',
@@ -56,7 +78,24 @@ export default new Router({
             title: '路由钩子函数',
             isUseCache: false,
             keepAlive: false
-          }
+          },
+          children: [
+            {
+              path: '/bar/:id',
+              name: 'bar',
+              component: resolve => require(['@/components/Pages/route/children/bar.vue'], resolve),
+              meta: {
+                title: '路由钩子',
+                isUseCache: false,
+                keepAlive: false
+              },
+              beforeEnter: (to, from, next) => {
+                console.log(to)
+                console.log(from)
+                next()//必须写
+              }
+            }
+          ]
         },
         // 状态管理
         {
