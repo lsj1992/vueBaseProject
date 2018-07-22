@@ -1,83 +1,75 @@
 <template>
   <div>
-    <el-row>
-      <el-col :span="16">
-        <el-card shadow="hover" :body-style="{ height: '304px'}">
-          <div slot="header" class="clearfix">
-              <span>待办事项</span>
-              <el-button style="float: right; padding: 3px 0" type="text">添加</el-button>
-          </div>
-          <el-table :data="todoList" :show-header="false" height="304" style="width: 100%;font-size:14px;">
-            <el-table-column width="40">
-              <template slot-scope="scope">
-                <el-checkbox v-model="scope.row.status"></el-checkbox>
-              </template>
-            </el-table-column>
-            <el-table-column>
-              <template slot-scope="scope">
-                <div class="todo-item" :class="{'todo-item-del': scope.row.status}">{{scope.row.title}}</div>
-              </template>
-            </el-table-column>
-            <el-table-column width="60">
-              <template slot-scope="scope">
-                <router-link :to="{ name: 'scope.row.routeName'}"><i class="el-icon-tickets"></i></router-link>
-              </template>
-            </el-table-column>
-          </el-table>
-        </el-card>
-      </el-col>
-    </el-row>
+    <h3 class="h_h3">组建之间项目传值<el-button class="reload_btn" @click="reloadData">恢复原值</el-button></h3>
+    <props-child :name='name' :age='age' :msg='msg' :oldMsg='oldMsg' @sendMsg='changeAge'></props-child>
   </div>
 </template>
 
 <script>
+import propsChild from "./propsChild";
 export default {
+  components: {
+    propsChild
+  },
   data() {
     return {
-      name: localStorage.getItem("ms_username"),
-      todoList: [
-        {
-          title: '路由的使用',
-          status: false,
-          routeName: 'RouteUsed'
-        },
-        {
-          title: '组建之间的传值、方法互调',
-          status: false,
-          routeName: 'PropsEmit'
-        },
-        {
-          title: 'vuex的使用',
-          status: false,
-          routeName: 'VuexUsed'
-        },
-        {
-          title: '今天要修复100个bug',
-          status: false,
-          routeName: 'RouteUsed'
-        },
-        {
-          title: '今天要修复100个bug',
-          status: true,
-          routeName: 'RouteUsed'
-        },
-        {
-          title: '今天要写100行代码加几个bug吧',
-          status: true,
-          routeName: 'RouteUsed'
-        }
-      ]
+      name: '张某某',
+      age: 18,
+      msg: {
+        height: 175,
+        weight: '75kg',
+      },
+      oldMsg: {
+        height: 160,
+        weight: '80kg',
+      }
     };
+  },
+  created() {
+
+  },
+  methods: {
+    changeAge(newAge) {
+      this.age = newAge
+    },
+    changeName(newName) {
+      this.name = newName
+    },
+    reloadData() {
+      this.name = '张某某'
+      this.age = 18
+      this.msg = {
+        height: 175,
+        weight: '75kg',
+      }
+      this.oldMsg = {
+        height: 160,
+        weight: '80kg',
+      }
+    }
   },
   computed: {
     role() {
       return this.name === "admin" ? "超级管理员" : "普通用户";
     }
+  },
+  mounted() {
+    this.$on('sendName', function (params) {
+      console.log('nieihh')
+      this.name = params
+    })
   }
 };
 </script>
 
 
 <style scoped>
+.h_h3 {
+  height: 50px;
+  line-height: 50px;
+}
+.reload_btn {
+  float: right;
 
+}
 </style>

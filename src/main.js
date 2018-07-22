@@ -8,12 +8,18 @@ import API from '../config/server.conf'
 import 'babel-polyfill'
 import ElementUI from 'element-ui'
 import store from './store'
+import Filters from './filters/filters'
 import 'element-ui/lib/theme-chalk/index.css' // 默认主题
 import './components/common/css/common.css'
 
 Vue.config.productionTip = false
 Vue.prototype.API = API
 Vue.prototype.http = http
+
+/* Public Filter */
+for (let key in Filters) {
+  Vue.filter(key, Filters[key])
+}
 
 Vue.use(ElementUI, { size: 'small' });
 

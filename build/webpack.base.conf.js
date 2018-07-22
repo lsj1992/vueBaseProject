@@ -36,8 +36,15 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
-      '~': resolve('static')
+      '~': resolve('static'),
+      '&': resolve('src/components')
     }
+  },
+  externals: {
+    // 'vue': 'Vue',
+    // 'vue-router': 'VueRouter',
+    // 'element-ui': 'element-ui',
+    // 'babel-polyfill': 'window'
   },
   module: {
     rules: [

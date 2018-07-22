@@ -69,6 +69,10 @@ export default {
             {
               index: 'busUsed',
               title: '兄弟组件之间方法调用'
+            },
+            {
+              index: 'vuexUsed',
+              title: 'vuex的使用'
             }
           ]
         },

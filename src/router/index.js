@@ -72,7 +72,7 @@ export default new Router({
         {
           path: '/refsChild',
           name: 'refsChild',
-          component: resolve => require(['@/components/Pages/vuex/refsChild.vue'], resolve),
+          component: resolve => require(['@/components/Pages/vuex/refsParent.vue'], resolve),
           meta: {
             title: 'refs、children、parents',
             isUseCache: false,
@@ -85,6 +85,16 @@ export default new Router({
           component: resolve => require(['@/components/Pages/vuex/busUsed.vue'], resolve),
           meta: {
             title: '兄弟组件之间方法调用',
+            isUseCache: false,
+            keepAlive: false
+          }
+        },
+        {
+          path: '/vuexUsed',
+          name: 'vuexUsed',
+          component: resolve => require(['@/components/Pages/vuex/vuexUsed.vue'], resolve),
+          meta: {
+            title: 'vuex的使用',
             isUseCache: false,
             keepAlive: false
           }

@@ -10,6 +10,7 @@
 
 const getters = {
   appState: state => state.app.appState,
-  language: state => state.app.language
+  language: state => state.app.language,
+  testState: state => state.vuexTest.testState
 }
 export default getters
