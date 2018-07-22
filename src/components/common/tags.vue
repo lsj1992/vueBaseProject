@@ -90,7 +90,10 @@ export default {
 
 <style>
 .tags {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
   height: 30px;
   overflow: hidden;
   background: #fff;
