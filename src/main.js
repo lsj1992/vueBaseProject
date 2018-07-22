@@ -21,7 +21,7 @@ for (let key in Filters) {
   Vue.filter(key, Filters[key])
 }
 
-Vue.use(ElementUI, { size: 'small' });
+Vue.use(ElementUI, { size: 'small' })
 
 /* eslint-disable no-new */
 new Vue({

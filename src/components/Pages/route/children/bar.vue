@@ -1,7 +1,22 @@
 <template>
   <div class="bar">
-    <div>bar组件{{$route.params.id}}</div>
+    <div>bar组件通过params获取到id值： {{$route.params.id}}</div>
     <button><router-link to="/home">离开，回首页</router-link></button>
+    <div></div>
+
+    <el-button type="text" @click="dialogVisible = true">点击打开 Dialog</el-button>
+
+    <el-dialog
+      title="提示"
+      :visible.sync="dialogVisible"
+      width="30%"
+      :before-close="handleClose">
+      <span>Do you really want to leave? you have unsaved changes!</span>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="dialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 
@@ -9,34 +24,45 @@
 export default {
   data() {
     return {
-      msg: ''
+      msg: '',
+      dialogVisible: false
+    }
+  },
+  methods: {
+    handleClose(done) {
+      this.$confirm('确认关闭？')
+        .then(() => {
+          done()
+        }).catch(() => {});
     }
   },
   beforeRouteEnter(to, from, next) {
     console.log(to)
     console.log(from)
-    next();
+    next()
+    // to 代表你要跳转到 哪一个 路由。
+    // from 当前所在的路由
     // 在渲染该组件的对应路由被 confirm 前调用
     // 不！能！获取组件实例 `this`
     // 因为当守卫执行前，组件实例还没被创建
   },
   beforeRouteUpdate(to, from, next) {
-    console.log(this.$route.params.id);
-    next();
+    this.$confirm('beforeRouteUpdate ' + this.$route.params.id)
+      .then(_ => {
+        next();
+      })
+      .catch(_ => {});
     // 在当前路由改变，但是该组件被复用时调用
     // 举例来说，对于一个带有动态参数的路径 /foo/:id，在 /foo/1 和 /foo/2 之间跳转的时候，
     // 由于会渲染同样的 Foo 组件，因此组件实例会被复用。而这个钩子就会在这个情况下被调用。
     // 可以访问组件实例 `this`
   },
   beforeRouteLeave(to, from, next) {
-    // 导航离开该组件的对应路由时调用
-    // 可以访问组件实例 `this`
-    const answer = window.confirm('Do you really want to leave? you have unsaved changes!')
-    if (answer) {
-      next()
-    } else {
-      next(false)
-    }
+    this.$confirm('Do you really want to leave? [beforeRouteLeave]')
+      .then(_ => {
+        next();
+      })
+      .catch(_ => {});
   }
 };
 </script>

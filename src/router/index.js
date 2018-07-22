@@ -20,7 +20,7 @@ export default new Router({
       children: [
         {
           path: '/home',
-          name: '/Home',
+          name: 'Home',
           component: resolve => require(['@/components/Pages/user/user.vue'], resolve),
           meta: {
             title: '用户信息',
@@ -28,16 +28,6 @@ export default new Router({
             keepAlive: false
           }
         },
-        // {
-        //   path: '/routeChildren',
-        //   name: 'routeChildren',
-        //   component: resolve => require(['@/components/Pages/route/parentRoute.vue'], resolve),
-        //   meta: {
-        //     title: '嵌套路由',
-        //     isUseCache: false,
-        //     keepAlive: false
-        //   }
-        // },
         {
           path: '/routeParams',
           name: 'routeParams',
@@ -49,8 +39,8 @@ export default new Router({
           },
           children: [
             {
-              path: '/home1',
-              name: 'home',
+              path: 'home1',
+              name: 'home1',
               component: resolve => require(['@/components/Pages/route/children/home.vue'], resolve),
               meta: {
                 title: '接收路由参数',
@@ -59,7 +49,7 @@ export default new Router({
               }
             }, // No props, no nothing
             {
-              path: '/foo',
+              path: 'foo',
               name: 'foo',
               component: resolve => require(['@/components/Pages/route/children/foo.vue'], resolve),
               meta: {
@@ -81,7 +71,7 @@ export default new Router({
           },
           children: [
             {
-              path: '/bar/:id',
+              path: 'bar/:id',
               name: 'bar',
               component: resolve => require(['@/components/Pages/route/children/bar.vue'], resolve),
               meta: {
@@ -90,6 +80,7 @@ export default new Router({
                 keepAlive: false
               },
               beforeEnter: (to, from, next) => {
+                to.meta.title = '路由钩子' + this.$route.params.id
                 console.log(to)
                 console.log(from)
                 next()//必须写
