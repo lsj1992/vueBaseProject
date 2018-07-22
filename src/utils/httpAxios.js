@@ -108,14 +108,10 @@ export default {
       })
     })
   },
-  ajax(url, method, param) {
+  ajax(baseMsg, param) {
     return new Promise((resolve, reject) => {
-      let msd = null
-      if (method) {
-        msd = method
-      } else {
-        msd = 'get'
-      }
+      let msd = baseMsg['method'] ? baseMsg['method'] : 'GET'
+      let url = baseMsg['url']
       if (msd === 'get' || msd === 'GET') {
         axios({
           method: msd,

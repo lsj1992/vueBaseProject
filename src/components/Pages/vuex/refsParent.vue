@@ -39,14 +39,6 @@ export default {
     },
     getChildMethods() {
       this.$refs.myChild.changeName('刘某某')
-      // let allRefs = this.$refs
-      // console.log(allRefs)
-      // for(let refs of allRefs) {
-      //   console.log(refs)
-      //   // if(refs === 'my_child') {
-      //   //   console.log(refs + '1212')
-      //   // }
-      // }
     }
   },
   mounted() {

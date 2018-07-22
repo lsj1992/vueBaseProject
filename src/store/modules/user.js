@@ -2,12 +2,13 @@ import { loginByUsername, logout, getUserInfo } from '@/api/login'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 
 const user = {
+  namespaced: true,
   state: {
-    user: '',
+    userID: '',
+    userName: '',
+    AccessToken: getToken(),
     status: '',
     code: '',
-    token: getToken(),
-    name: '',
     avatar: '',
     introduction: '',
     roles: [],
@@ -15,13 +16,25 @@ const user = {
       articlePlatform: []
     }
   },
-
+  getters: {
+    getUserID: state => state.userID,
+    getUserName: state => state.userName,
+    getAccessToken: state => state.AccessToken,
+    getRoles: state => state.roles,
+  },
   mutations: {
     SET_CODE: (state, code) => {
       state.code = code
     },
+    SET_USER_NAME: (state, name) => {
+      state.userName = name
+    },
+    SET_USER_ID: (state, userid) => {
+      state.userID = userid
+    },
     SET_TOKEN: (state, token) => {
-      state.token = token
+      state.AccessToken = token
+      setToken(token)
     },
     SET_INTRODUCTION: (state, introduction) => {
       state.introduction = introduction
@@ -31,9 +44,6 @@ const user = {
     },
     SET_STATUS: (state, status) => {
       state.status = status
-    },
-    SET_NAME: (state, name) => {
-      state.name = name
     },
     SET_AVATAR: (state, avatar) => {
       state.avatar = avatar
@@ -45,7 +55,7 @@ const user = {
 
   actions: {
     // 用户名登录
-    LoginByUsername({ commit }, userInfo) {
+    login({ commit }, userInfo) {
       const username = userInfo.username.trim()
       return new Promise((resolve, reject) => {
         loginByUsername(username, userInfo.password).then(response => {
@@ -73,7 +83,7 @@ const user = {
           } else {
             // reject('getInfo: roles must be a non-null array !')
           }
-          commit('SET_NAME', data.name)
+          commit('SET_USER_NAME', data.name)
           commit('SET_AVATAR', data.avatar)
           commit('SET_INTRODUCTION', data.introduction)
           resolve(response)
@@ -128,7 +138,7 @@ const user = {
         getUserInfo(role).then(response => {
           const data = response.data
           commit('SET_ROLES', data.roles)
-          commit('SET_NAME', data.name)
+          commit('SET_USER_NAME', data.name)
           commit('SET_AVATAR', data.avatar)
           commit('SET_INTRODUCTION', data.introduction)
           resolve()

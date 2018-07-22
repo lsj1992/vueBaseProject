@@ -4,7 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import http from './utils/httpAxios'
-import API from '../config/server.conf'
+import API from './api/server.conf'
 import 'babel-polyfill'
 import ElementUI from 'element-ui'
 import store from './store'
@@ -14,6 +14,7 @@ import './components/common/css/common.css'
 
 Vue.config.productionTip = false
 Vue.prototype.API = API
+console.log(API.c_get_type)
 Vue.prototype.http = http
 
 /* Public Filter */
