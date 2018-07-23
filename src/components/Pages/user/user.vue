@@ -4,8 +4,7 @@
       <el-col :span="16">
         <el-card shadow="hover" :body-style="{ height: '304px'}">
           <div slot="header" class="clearfix">
-              <span>待办事项</span>
-              <el-button style="float: right; padding: 3px 0" type="text">添加</el-button>
+              <span>待办事项1212</span>
           </div>
           <el-table :data="todoList" :show-header="false" height="304" style="width: 100%;font-size:14px;">
             <el-table-column width="40">
@@ -16,11 +15,6 @@
             <el-table-column>
               <template slot-scope="scope">
                 <div class="todo-item" :class="{'todo-item-del': scope.row.status}">{{scope.row.title}}</div>
-              </template>
-            </el-table-column>
-            <el-table-column width="60">
-              <template slot-scope="scope">
-                <router-link :to="{ name: 'scope.row.routeName'}"><i class="el-icon-tickets"></i></router-link>
               </template>
             </el-table-column>
           </el-table>

@@ -28,7 +28,7 @@ export default {
   methods: {
     getChildData() {
       for(let child of this.$children) {
-        console.log(child.name)
+        console.log(child)
         if(child.name === '张某某') {
           this.$set(this, 'childMsg', child.msg)
         }

@@ -47,7 +47,7 @@ export default new Router({
                 isUseCache: false,
                 keepAlive: false
               }
-            }, // No props, no nothing
+            },
             {
               path: 'foo',
               name: 'foo',
@@ -80,7 +80,6 @@ export default new Router({
                 keepAlive: false
               },
               beforeEnter: (to, from, next) => {
-                // to.meta.title = '路由钩子' + this.$route.params.id
                 console.log(to)
                 console.log(from)
                 next()//必须写
@@ -137,7 +136,7 @@ export default new Router({
       component: resolve => require(['@/components/Pages/Login.vue'], resolve),
       meta: {
         title: '首页',
-        isUseCache: false, // 结合activated钩子函数中的判断来确定是否去刷新数据
+        isUseCache: false,
         keepAlive: false
       }
     },
@@ -147,7 +146,7 @@ export default new Router({
       component: HelloWorld,
       meta: {
         title: 'Nihao 世界',
-        isUseCache: false, // 结合activated钩子函数中的判断来确定是否去刷新数据
+        isUseCache: false,
         keepAlive: false
       }
     },

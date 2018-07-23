@@ -14,7 +14,6 @@ import './components/common/css/common.css'
 
 Vue.config.productionTip = false
 Vue.prototype.API = API
-console.log(API.c_get_type)
 Vue.prototype.http = http
 
 /* Public Filter */
@@ -31,7 +30,8 @@ new Vue({
   store,
   data() {
     return {
-      bus: new Vue()
+      bus: new Vue(),
+      haha: 'hahah'
     }
   }
 }).$mount('#app')

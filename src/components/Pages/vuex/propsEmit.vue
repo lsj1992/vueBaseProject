@@ -8,6 +8,7 @@
 <script>
 import propsChild from "./propsChild";
 export default {
+  name: 'propsEmit',
   components: {
     propsChild
   },
@@ -49,9 +50,6 @@ export default {
     }
   },
   computed: {
-    role() {
-      return this.name === "admin" ? "超级管理员" : "普通用户";
-    }
   },
   mounted() {
     this.$on('sendName', function (params) {

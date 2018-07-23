@@ -2,9 +2,14 @@
   <div class="bar">
     <div>bar组件通过params获取到id值： {{$route.params.id}}</div>
     <button><router-link to="/home">离开，回首页</router-link></button>
-    <div></div>
+    <div>
+      路由钩子函数<br>
+      beforeRouteEnter<br>
+      beforeRouteUpdate (2.2 新增)<br>
+      beforeRouteLeave<br>
+    </div>
 
-    <el-button type="text" @click="dialogVisible = true">点击打开 Dialog</el-button>
+    <!-- <el-button type="text" @click="dialogVisible = true">点击打开 Dialog</el-button>
 
     <el-dialog
       title="提示"
@@ -16,7 +21,7 @@
         <el-button @click="dialogVisible = false">取 消</el-button>
         <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
       </span>
-    </el-dialog>
+    </el-dialog> -->
   </div>
 </template>
 
@@ -40,7 +45,7 @@ export default {
     console.log(to)
     console.log(from)
     next()
-    // to 代表你要跳转到 哪一个 路由。
+    // to 代表你要跳转到 的 路由。
     // from 当前所在的路由
     // 在渲染该组件的对应路由被 confirm 前调用
     // 不！能！获取组件实例 `this`
@@ -58,11 +63,14 @@ export default {
     // 可以访问组件实例 `this`
   },
   beforeRouteLeave(to, from, next) {
-    this.$confirm('Do you really want to leave? [beforeRouteLeave]')
+    this.$confirm('确定要离开吗? [beforeRouteLeave]')
       .then(_ => {
         next();
       })
       .catch(_ => {});
+  },
+  mounted() {
+    console.log(this.$root)
   }
 };
 </script>

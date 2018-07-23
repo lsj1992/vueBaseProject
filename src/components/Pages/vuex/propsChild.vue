@@ -15,6 +15,7 @@
 <script>
 import bus from '&/common/bus'
 export default {
+  name: 'propsChild',
   props: ['name', 'age', 'msg'],
   data() {
     return {
@@ -32,11 +33,15 @@ export default {
     },
     sendParentName() {
       this.$emit('sendName', this.changedName)
-      console.log('1')
+      console.log('触发了 this.$emit ')
     }
   },
   mounted() {
+    // 这里用$on监听一下，sendName
     let _this = this
+    _this.$on('sendName', function (name) {
+      console.log(name)
+    })
     bus.$on('changeLike', function (newLike) {
       console.log('默认的： ' + this.like)
       console.log('传递过来的： ' + newLike)
@@ -44,6 +49,7 @@ export default {
       console.log('改变后的： ' + this.like)
       // 用定时器演示上面代码，数据改变，但也没没有刷新
       setTimeout(() => {
+        console.log('触发了改变')
         _this.$set(_this, 'like', newLike)
       }, 5000);
     })

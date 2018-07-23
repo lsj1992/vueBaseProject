@@ -1,9 +1,10 @@
 let nodeEnv = process.env.NODE_ENV
+console.log('NODE_ENV:  ' + nodeEnv)
 let baseHref = ''
 if (nodeEnv === 'development') {
   baseHref = ''
 } else if (nodeEnv === 'production') {
-  baseHref = 'http://localhost:3000'
+  baseHref = 'http://localhost:4000'
 } else if (nodeEnv === 'testing') {
   baseHref = 'http://localhost:3000'
 }
