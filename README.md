@@ -20,6 +20,16 @@ dependencies 生成环境所需要的依赖  通过: npm install --save modelNam
 
 devDependencies 开发环境所需要的依赖
 
+script 标签用来定义一些常用命令，方便我们通过 npm run '命令名称' 的方式来执行
+
+bulid/ 目录和 config/ 目录 用来配置webpack打包和开发、测试所需要的环境配置，
+
+dist/ 目录是项目打包后将打包好的文件放到该目录下
+
+src/ 目录，该目录是开发人员代码所在位置 入口文件是main.js, 路由挂载在App.vue文件中。
+
+static/ 放一些静态资源文件，该文件夹下的文件不会被webpack编译打包，打包的时候只会将他拷贝到dist/static/相应的路径下。
+
 
 
 # install dependencies

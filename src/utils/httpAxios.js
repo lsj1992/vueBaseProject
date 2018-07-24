@@ -1,10 +1,12 @@
 // 引入axios
 import axios from 'axios'
 import Qs from 'qs'
+import Cookies from 'js-cookie'
 
 let cancel = {}
 let promiseArr = {}
 const CancelToken = axios.CancelToken
+const AccessToken = Cookies.get('AccessToken')
 // 请求拦截器
 axios.interceptors.request.use(config => {
   // 发起请求时，取消掉当前正在进行的相同请求
@@ -14,7 +16,7 @@ axios.interceptors.request.use(config => {
   } else {
     promiseArr[config.url] = cancel
   }
-  return config
+  return config;
 }, error => {
   return Promise.reject(error)
 })
@@ -71,20 +73,33 @@ axios.interceptors.response.use(response => {
   return Promise.resolve(err.response)
 })
 // `baseURL` 将自动加在 `url` 前面，除非 `url` 是一个绝对 URL。
-// 它可以通过设置一个 `baseURL` 便于为 axios 实例的方法传递相对 URL
+// 它可以通过设置一个 `baseURL` 便于为 axios 实例的方法传递相对 URL , 如果传递的是绝对路径，则以传入的为主
 axios.defaults.baseURL = '/'
 // 设置默认请求头
 // axios.defaults.headers['Content-Type'] = 'application/json'
 // axios.defaults.headers = {
 //   'X-Requested-With': 'XMLHttpRequest'
 // }
-axios.defaults.timeout = 10000
+axios.defaults.headers.common['AccessToken'] = AccessToken
+
+axios.defaults.timeout = 20000
 
 // 这里可以在发送请求之前对请求数据做处理，比如form-data格式化等，这里可以使用开头引入的Qs（这个模块在安装axios的时候就已经安装了，不需要另外安装）
 axios.defaults.transformRequest = (data) => {
   return Qs.stringify(data)
 }
+
 export default {
+  // 对 axios.all() 的封装 aRequest 是个数组，[getAjax1, getAjax2]
+  all(aRequest) {
+    return axios.all(aRequest).then(axios.spread(function () {
+      var aReturn = []
+      for (var i of arguments) {
+        aReturn.push(i)
+      }
+      return aReturn
+    }))
+  },
   // get请求
   get(url, param) {
     return new Promise((resolve, reject) => {
