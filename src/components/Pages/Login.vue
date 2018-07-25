@@ -1,21 +1,21 @@
 <template>
-    <div class="login-wrap">
-        <div class="ms-title">后台管理系统</div>
-        <div class="ms-login">
-            <el-form :model="userInfo" :rules="rules" ref="userInfo" label-width="0px" class="demo-userInfo">
-                <el-form-item prop="username">
-                    <el-input v-model="userInfo.username" placeholder="username"></el-input>
-                </el-form-item>
-                <el-form-item prop="password">
-                    <el-input type="password" placeholder="password" v-model="userInfo.password" @keyup.enter.native="submitForm('userInfo')"></el-input>
-                </el-form-item>
-                <div class="login-btn">
-                    <el-button type="primary" @click="submitForm('userInfo')">登录</el-button>
-                </div>
-                <p style="font-size:12px;line-height:30px;color:#999;">Tips : 用户名和密码随便填。</p>
-            </el-form>
-        </div>
-    </div>
+  <div class="login-wrap">
+      <div class="ms-title">后台管理系统</div>
+      <div class="ms-login">
+          <el-form :model="userInfo" :rules="rules" ref="userInfo" label-width="0px" class="demo-userInfo">
+              <el-form-item prop="username">
+                  <el-input v-model="userInfo.username" placeholder="username"></el-input>
+              </el-form-item>
+              <el-form-item prop="password">
+                  <el-input type="password" placeholder="password" v-model="userInfo.password" @keyup.enter.native="submitForm('userInfo')"></el-input>
+              </el-form-item>
+              <div class="login-btn">
+                  <el-button type="primary" @click="submitForm('userInfo')">登录</el-button>
+              </div>
+              <p style="font-size:12px;line-height:30px;color:#999;">Tips : 用户名和密码随便填。</p>
+          </el-form>
+      </div>
+  </div>
 </template>
 
 <script>
@@ -40,15 +40,16 @@ export default {
   },
   methods: {
     ...mapMutations('user', ['SET_USER_NAME', 'SET_USER_ID', 'SET_TOKEN']),
-    ...mapActions('user', ['login', 'LogOut', 'FedLogOut', 'ChangeRoles', 'getUserInfo']),
+    ...mapActions('user', ['setUserName', 'login', 'LogOut', 'FedLogOut', 'ChangeRoles', 'getUserInfo']),
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
           // mock js 返回的是提交的参数，所以这里只是演示登录后信息的存储
           this.login(this.userInfo).then((response) => {
-            localStorage.setItem("userName", response.username);
-            this.$store.commit('SET_USER_NAME', response.password)
             this.$router.push("/");
+            // 可以通过下面方式调用 action 和 mutation
+            //this.SET_USER_NAME(response.username)
+            // this.setUserName(response.username)
           }).catch(error => {
             this.$message({
               message: error != null ? error : '登录失败',

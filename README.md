@@ -30,7 +30,7 @@ src/ 目录，该目录是开发人员代码所在位置 入口文件是main.js,
 
 static/ 放一些静态资源文件，该文件夹下的文件不会被webpack编译打包，打包的时候只会将他拷贝到dist/static/相应的路径下。
 
-
+今天下午讲 vue生命周期钩子函数，过滤器filters，混入mixins, 父子组件之间传值，方法调用，涉及到的关键词有【props, $on, $emit,$refs, $children, $parent, Event bus】, 时间允许的话讲【vuex】
 
 # install dependencies
 npm install

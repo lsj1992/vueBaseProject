@@ -27,7 +27,7 @@
         <!-- 用户名下拉菜单 -->
         <el-dropdown class="user-name" trigger="click" @command="handleCommand">
           <span class="el-dropdown-link">
-              {{username}} <i class="el-icon-caret-bottom"></i>
+              {{getUserName}} <i class="el-icon-caret-bottom"></i>
           </span>
           <el-dropdown-menu slot="dropdown">
             <a href="http://www.baidu.com" target="_blank">
@@ -41,7 +41,9 @@
   </div>
 </template>
 <script>
+import { mapGetters } from "vuex";
 export default {
+
   data() {
     return {
       collapse: false,
@@ -51,16 +53,12 @@ export default {
     }
   },
   computed: {
-    username() {
-      let username = localStorage.getItem('ms_username')
-      return username === true ? username : this.name
-    }
+    ...mapGetters('user', ['getUserName'])
   },
   methods: {
     // 用户名下拉菜单选择事件
     handleCommand(command) {
       if (command === 'loginout') {
-        localStorage.removeItem('ms_username')
         this.$router.push('/login')
       }
     },

@@ -6,7 +6,10 @@
     "sex": "女"
   },
   "login": {
-    "username": "admin",
-    "password": "123123"
+    "id": 2,
+    "username": "李四",
+    "token": "DIJIGIEHKDHSNMNGG",
+    "age": 18,
+    "sex": "男"
   }
 }

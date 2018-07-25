@@ -1,6 +1,9 @@
 import { loginByUsername, logout, getUserInfo } from '@/api/login'
 import { getToken, setToken, removeToken } from '@/utils/auth'
-
+// import VuexPersistence from 'vuex-persist'
+// const vuexLocal = new VuexPersistence({
+//   storage: window.localStorage
+// })
 const user = {
   namespaced: true,
   state: {
@@ -18,7 +21,7 @@ const user = {
   },
   getters: {
     getUserID: state => state.userID,
-    getUserName: state => state.userName,
+    getUserName: state => state.userName ? state.userName : 'lisi',
     getAccessToken: state => state.AccessToken,
     getRoles: state => state.roles,
   },
@@ -54,6 +57,10 @@ const user = {
   },
 
   actions: {
+    setUserName({ commit }, name) {
+      console.log('ngiehghihihih')
+      commit('SET_USER_NAME', name)
+    },
     // 用户名登录
     login({ commit }, userInfo) {
       const username = userInfo.username.trim()
@@ -61,8 +68,9 @@ const user = {
         loginByUsername(username, userInfo.password).then(response => {
           const data = response.data
           commit('SET_TOKEN', data.token)
-          setToken(response.data.token)
-          resolve()
+          commit('SET_USER_NAME', data.username)
+          setToken(data.token)
+          resolve(data)
         }).catch(error => {
           reject(error)
         })
@@ -145,7 +153,8 @@ const user = {
         })
       })
     }
-  }
+  },
+  // plugins: [vuexLocal.plugin]
 }
 
 export default user

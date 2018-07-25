@@ -13,7 +13,7 @@
     "lint": "eslint --ext .js,.vue src test/unit test/e2e/specs",
     "build": "node build/build.js",
     "build:dll": "webpack --config build/webpack.dll.conf.js",
-    "mock": "json-server --watch mockData/mock.json"
+    "mock": "json-server --watch mockData/mock.json --m mockData/post-to-get.js"
   },
   "dependencies": {
     "axios": "^0.15.3",
