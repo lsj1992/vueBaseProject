@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3 class="h_h3">组建之间项目方法互相调用</h3>
+    <h3 class="h_h3">组建之间方法互相调用 refsParents.vue</h3>
     <refs-child ref="myChild"></refs-child>
     <div class="zhuyi">注意这里：由于使用了el-button其实他也是子组件，所以在使用this.$children会获得三个组件</div>
     <el-button @click="getChildData">获取子组件中的中data里的msg</el-button><span>: {{childMsg}}</span>
@@ -29,7 +29,7 @@ export default {
     getChildData() {
       for(let child of this.$children) {
         console.log(child)
-        if(child.name === '张某某') {
+        if(child.$options.name === 'refschild') {
           this.$set(this, 'childMsg', child.msg)
         }
       }
@@ -42,6 +42,7 @@ export default {
     }
   },
   mounted() {
+    console.log(this.$children)
   }
 };
 </script>

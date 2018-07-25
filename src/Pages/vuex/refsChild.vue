@@ -1,7 +1,7 @@
 <template>
   <div class="refs_child">
-    <h3>这是子组件</h3>
-    子组件 名字：{{name}}
+    <h3>这是子组件refsChild.vue</h3>
+    子组件 名字：{{names}}
     <div>
       <el-button @click="getParentData">获取父元素的data中的值</el-button>
       <span>父元素中的数据：{{parentData}}</span>
@@ -12,10 +12,10 @@
 
 <script>
 export default {
-
+  name: 'refschild',
   data() {
     return {
-      name: '张某某',
+      names: '张某某',
       msg: '这是子组件中的msg展示到父组件中',
       parentData: ''
     };
@@ -25,7 +25,7 @@ export default {
   },
   methods: {
     changeName(name) {
-      this.$set(this, 'name', name)
+      this.$set(this, 'names', name)
     },
     getParentData() {
       console.log(this.$parent)

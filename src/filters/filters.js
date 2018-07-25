@@ -4,6 +4,14 @@ export default {
     return sourceStr.split('').reverse().join('')
   },
 
+  unique(array) {
+    return new Set(array)
+  },
+
+  toLower(str) {
+    return str.toLowerCase()
+  },
+
   dateConvert(time) {
     return time ? new Date(time).Format('yyyy-MM-dd hh:mm') : ''
   },

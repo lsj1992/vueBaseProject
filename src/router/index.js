@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+import HelloWorld from '&/HelloWorld'
 
 Vue.use(Router)
 
@@ -12,7 +12,7 @@ export default new Router({
     },
     {
       path: '/',
-      component: resolve => require(['@/components/common/homePage.vue'], resolve),
+      component: resolve => require(['&/common/homePage.vue'], resolve),
       meta: {
         title: '首页',
         isUseCache: false, // 结合activated钩子函数中的判断来确定是否去刷新数据
@@ -21,7 +21,7 @@ export default new Router({
         {
           path: '/home',
           name: 'Home',
-          component: resolve => require(['@/components/Pages/user/user.vue'], resolve),
+          component: resolve => require(['#/user/user.vue'], resolve),
           meta: {
             title: '用户信息',
             isUseCache: false,
@@ -31,7 +31,7 @@ export default new Router({
         {
           path: '/routeParams',
           name: 'routeParams',
-          component: resolve => require(['@/components/Pages/route/routeParams.vue'], resolve),
+          component: resolve => require(['#/route/routeParams.vue'], resolve),
           meta: {
             title: '路由传参',
             isUseCache: false,
@@ -41,7 +41,7 @@ export default new Router({
             {
               path: 'home1',
               name: 'home1',
-              component: resolve => require(['@/components/Pages/route/children/home.vue'], resolve),
+              component: resolve => require(['#/route/children/home.vue'], resolve),
               meta: {
                 title: 'query接收路由参数',
                 isUseCache: false,
@@ -51,7 +51,7 @@ export default new Router({
             {
               path: 'foo',
               name: 'foo',
-              component: resolve => require(['@/components/Pages/route/children/foo.vue'], resolve),
+              component: resolve => require(['#/route/children/foo.vue'], resolve),
               meta: {
                 title: 'params接收路由参数',
                 isUseCache: false,
@@ -63,7 +63,7 @@ export default new Router({
         {
           path: '/routeMethods',
           name: 'routeMethods',
-          component: resolve => require(['@/components/Pages/route/routeMethods.vue'], resolve),
+          component: resolve => require(['#/route/routeMethods.vue'], resolve),
           meta: {
             title: '路由钩子函数',
             isUseCache: false,
@@ -73,7 +73,7 @@ export default new Router({
             {
               path: 'bar/:id',
               name: 'bar',
-              component: resolve => require(['@/components/Pages/route/children/bar.vue'], resolve),
+              component: resolve => require(['#/route/children/bar.vue'], resolve),
               meta: {
                 title: '路由钩子',
                 isUseCache: false,
@@ -91,7 +91,7 @@ export default new Router({
         {
           path: '/propsEmit',
           name: 'propsEmit',
-          component: resolve => require(['@/components/Pages/vuex/propsEmit.vue'], resolve),
+          component: resolve => require(['#/vuex/propsEmit.vue'], resolve),
           meta: {
             title: 'props和emit的使用',
             isUseCache: false,
@@ -101,7 +101,7 @@ export default new Router({
         {
           path: '/refsChild',
           name: 'refsChild',
-          component: resolve => require(['@/components/Pages/vuex/refsParent.vue'], resolve),
+          component: resolve => require(['#/vuex/refsParent.vue'], resolve),
           meta: {
             title: 'refs、children、parents',
             isUseCache: false,
@@ -111,7 +111,7 @@ export default new Router({
         {
           path: '/busUsed',
           name: 'busUsed',
-          component: resolve => require(['@/components/Pages/vuex/busUsed.vue'], resolve),
+          component: resolve => require(['#/vuex/busUsed.vue'], resolve),
           meta: {
             title: '兄弟组件之间方法调用',
             isUseCache: false,
@@ -121,9 +121,39 @@ export default new Router({
         {
           path: '/vuexUsed',
           name: 'vuexUsed',
-          component: resolve => require(['@/components/Pages/vuex/vuexUsed.vue'], resolve),
+          component: resolve => require(['#/vuex/vuexUsed.vue'], resolve),
           meta: {
             title: 'vuex的使用',
+            isUseCache: false,
+            keepAlive: false
+          }
+        },
+        {
+          path: '/testOnEmit',
+          name: 'testOnEmit',
+          component: resolve => require(['#/vuex/test$on.vue'], resolve),
+          meta: {
+            title: '$on测试',
+            isUseCache: false,
+            keepAlive: false
+          }
+        },
+        {
+          path: '/useMiXin',
+          name: 'useMiXin',
+          component: resolve => require(['#/useMixin/usemixin.vue'], resolve),
+          meta: {
+            title: '用户信息',
+            isUseCache: false,
+            keepAlive: false
+          }
+        },
+        {
+          path: '/lifeCycle',
+          name: 'lifeCycle',
+          component: resolve => require(['#/vuex/lifeCycle.vue'], resolve),
+          meta: {
+            title: '生命周期',
             isUseCache: false,
             keepAlive: false
           }
@@ -133,7 +163,7 @@ export default new Router({
     {
       path: '/Login',
       name: 'Login',
-      component: resolve => require(['@/components/Pages/Login.vue'], resolve),
+      component: resolve => require(['#/Login.vue'], resolve),
       meta: {
         title: '首页',
         isUseCache: false,
@@ -152,7 +182,7 @@ export default new Router({
     },
     {
       path: '/404',
-      component: resolve => require(['@/components/Pages/404'], resolve)
+      component: resolve => require(['#/404'], resolve)
     },
     {
       path: '*',

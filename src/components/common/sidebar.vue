@@ -69,6 +69,18 @@ export default {
             {
               index: 'vuexUsed',
               title: 'vuex的使用'
+            },
+            {
+              index: 'testOnEmit',
+              title: '测试$on'
+            },
+            {
+              index: 'useMiXin',
+              title: 'MiXin的使用'
+            },
+            {
+              index: 'lifeCycle',
+              title: '生命周期'
             }
           ]
         },

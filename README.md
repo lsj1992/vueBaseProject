@@ -32,6 +32,15 @@ static/ 放一些静态资源文件，该文件夹下的文件不会被webpack�
 
 今天下午讲 vue生命周期钩子函数，过滤器filters，混入mixins, 父子组件之间传值，方法调用，涉及到的关键词有【props, $on, $emit,$refs, $children, $parent, Event bus】, 时间允许的话讲【vuex】
 
+beforeCreate（创建前）
+created（创建后）
+beforeMount（载入前）
+mounted（载入后）
+beforeUpdate（更新前）
+updated（更新后）
+beforeDestroy（销毁前）
+destroyed（销毁后）
+
 # install dependencies
 npm install
 
