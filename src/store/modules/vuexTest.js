@@ -1,11 +1,12 @@
-import { getData } from "@/api/testApi";
+import { getData, getTableList } from "@/api/testApi";
 const vuexTest = {
   namespaced: true,
   state: {
     testState: '测试',
     testAge: 18,
     msgData: {},
-    testComputed: '通过computed中获取该值'
+    testComputed: '通过computed中获取该值',
+    tableData: []
   },
   getters: {
     getTestState: state => state.testState,
@@ -14,6 +15,9 @@ const vuexTest = {
     },
     getMsgData: state => {
       return state.msgData
+    },
+    getTableList: state => {
+      return state.tableData
     }
   },
   mutations: {
@@ -25,6 +29,9 @@ const vuexTest = {
     },
     get_ajax_data: (state, newData) => {
       state.msgData = newData
+    },
+    set_table_data: (state, newData) => {
+      state.tableData = newData
     }
   },
   actions: {
@@ -45,6 +52,18 @@ const vuexTest = {
         })
       })
     },
+    getTableData({ commit }, params) {
+      return new Promise((resolve, reject) => {
+        console.log('geiwjhgeihi')
+        getTableList(params).then(response => {
+          const data = response.data
+          commit('set_table_data', data)
+          resolve(data)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    }
   }
 }
 

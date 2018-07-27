@@ -158,6 +158,26 @@ export default new Router({
             keepAlive: false
           }
         },
+        {
+          path: '/directSingle',
+          name: 'directSingle',
+          component: resolve => require(['@/directive/directDemo.vue'], resolve),
+          meta: {
+            title: '局部指令',
+            isUseCache: false,
+            keepAlive: false
+          }
+        },
+        {
+          path: '/tableDemo',
+          name: 'tableDemo',
+          component: resolve => require(['#/vuex/tableDemo.vue'], resolve),
+          meta: {
+            title: '表格示例',
+            isUseCache: false,
+            keepAlive: false
+          }
+        },
       ]
     },
     {

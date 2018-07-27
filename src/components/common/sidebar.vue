@@ -81,24 +81,17 @@ export default {
             {
               index: 'lifeCycle',
               title: '生命周期'
+            },
+            {
+              index: 'directSingle',
+              title: '局部指令'
+            },
+            {
+              index: 'tableDemo',
+              title: '表格示例'
             }
           ]
-        },
-        // {
-        //   icon: 'el-icon-date',
-        //   index: '5',
-        //   title: '课程产品运营',
-        //   subs: [
-        //     {
-        //       index: 'product_list',
-        //       title: '产品列表'
-        //     },
-        //     {
-        //       index: 'product_detail',
-        //       title: '产品详情'
-        //     }
-        //   ]
-        // }
+        }
       ]
     }
   },

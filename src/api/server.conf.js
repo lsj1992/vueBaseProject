@@ -1,13 +1,4 @@
-let nodeEnv = process.env.NODE_ENV
-console.log('NODE_ENV:  ' + nodeEnv)
-let baseHref = ''
-if (nodeEnv === 'development') {
-  baseHref = ''
-} else if (nodeEnv === 'production') {
-  baseHref = 'http://localhost:4000'
-} else if (nodeEnv === 'testing') {
-  baseHref = 'http://localhost:3000'
-}
+import {baseHref} from './server.ip'
 
 function resorve(path) {
   return baseHref + path
@@ -16,7 +7,6 @@ function resorve(path) {
 export default {
   apiHref: baseHref,
   // 基础api接口路径
-  // apiHref: baseHref,
   /**
    *  用户接口
    *
@@ -39,6 +29,11 @@ export default {
   // 获取用户
   uGetUser: {
     url: resorve('/api/user'),
+    method: 'GET'
+  },
+  // 获取table列表数据
+  uGetTableList: {
+    url: resorve('/api/tableList'),
     method: 'GET'
   }
 }

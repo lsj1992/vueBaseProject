@@ -41,6 +41,8 @@ updated（更新后）
 beforeDestroy（销毁前）
 destroyed（销毁后）
 
+自定义指令，调试项目，api接口调用
+
 # install dependencies
 npm install
 

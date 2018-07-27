@@ -40,13 +40,18 @@ module.exports = {
      * Source Maps
      */
 
+    // 将下面devtool换成eval-source-map 或者 source-map 方便开发调试
     // https://webpack.js.org/configuration/devtool/#development
-    devtool: 'cheap-module-eval-source-map',
+    // devtool: 'cheap-module-eval-source-map',
+    // devtool: 'eval-source-map',
+    devtool: 'source-map',
 
     // If you have problems debugging vue-files in devtools,
     // set this to false - it *may* help
     // https://vue-loader.vuejs.org/en/options.html#cachebusting
-    cacheBusting: true,
+
+    // 设置为false
+    cacheBusting: false,
 
     cssSourceMap: false
   },

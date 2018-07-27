@@ -91,6 +91,9 @@ export default {
     }
   },
   mounted() {
+    // debugger
+    console.log('nihao121')
+    console.log('nihao')
   },
   watch: {
     // 注意这里不嫩使用箭头函数， 因为箭头函数，绑定了作用域上下文，所以这里的this并不是vue
