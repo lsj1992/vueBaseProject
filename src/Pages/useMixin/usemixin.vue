@@ -91,7 +91,7 @@ export default {
     }
   },
   mounted() {
-    // debugger
+    debugger
     console.log('nihao121')
     console.log('nihao')
   },

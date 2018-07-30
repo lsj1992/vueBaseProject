@@ -1,6 +1,6 @@
 import Cookies from 'js-cookie'
 
-const TokenKey = 'AccessToken'
+const TokenKey = 'Tescomm_Access_Token'
 
 export function getToken() {
   return Cookies.get(TokenKey)

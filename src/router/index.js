@@ -29,6 +29,16 @@ export default new Router({
           }
         },
         {
+          path: 'todoList',
+          name: 'todoList',
+          component: resolve => require(['#/user/todoList.vue'], resolve),
+          meta: {
+            title: 'TodoList',
+            isUseCache: false,
+            keepAlive: false
+          }
+        },
+        {
           path: '/routeParams',
           name: 'routeParams',
           component: resolve => require(['#/route/routeParams.vue'], resolve),
@@ -57,7 +67,7 @@ export default new Router({
                 isUseCache: false,
                 keepAlive: false
               }
-            }
+            },
           ]
         },
         {
@@ -174,6 +184,16 @@ export default new Router({
           component: resolve => require(['#/vuex/tableDemo.vue'], resolve),
           meta: {
             title: '表格示例',
+            isUseCache: false,
+            keepAlive: false
+          }
+        },
+        {
+          path: '/ExportTable',
+          name: 'ExportTable',
+          component: resolve => require(['#/tables/exportTableToExcel.vue'], resolve),
+          meta: {
+            title: '导出表格',
             isUseCache: false,
             keepAlive: false
           }

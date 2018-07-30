@@ -7,4 +7,4 @@ if (nodeEnv === 'development') {
 } else if (nodeEnv === 'testing') {
   IP = 'http://localhost:3000'
 }
-export let baseHref = IP
+export const baseHref = IP

@@ -6,15 +6,20 @@
           <div slot="header" class="clearfix">
               <span>待办事项1212</span>
           </div>
-          <el-table :data="todoList" :show-header="false" height="304" style="width: 100%;font-size:14px;">
-            <el-table-column width="40">
-              <template slot-scope="scope">
-                <el-checkbox v-model="scope.row.status"></el-checkbox>
+          <el-table :data="todoList" :show-header="true"  height="304" style="width: 100%;font-size:14px;">
+            <el-table-column type="selection" width="40">
+              <template slot-scope="scope11">
+                <el-checkbox v-model="scope11.row.status"></el-checkbox>
               </template>
             </el-table-column>
-            <el-table-column>
-              <template slot-scope="scope">
+            <el-table-column width="500">
+              <template slot-scope="scope" label="活动名称">
                 <div class="todo-item" :class="{'todo-item-del': scope.row.status}">{{scope.row.title}}</div>
+              </template>
+            </el-table-column>
+            <el-table-column width="40">
+              <template slot-scope="scope" label="操作">
+                <el-button type="text" size="small" @click="handleJoinPeople(scope.row)">操作</el-button>
               </template>
             </el-table-column>
           </el-table>
@@ -67,6 +72,14 @@ export default {
     role() {
       return this.name === "admin" ? "超级管理员" : "普通用户";
     }
+  },
+  methods: {
+    handleJoinPeople(data) {
+      console.log(data)
+    }
+  },
+  mounted() {
+    console.log(this.scope1)
   }
 };
 </script>

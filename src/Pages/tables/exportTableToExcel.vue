@@ -41,10 +41,13 @@
       layout="total, sizes, prev, pager, next, jumper"
       :total="total">
   </el-pagination>
+  <el-button @click="exportExcel">导出excel</el-button>
   </div>
 </template>
 <script>
-import { mapGetters, mapActions } from "vuex";
+import { mapGetters, mapActions } from 'vuex';
+import { Excel } from '@/utils/excel'
+import { uExportExcel } from '@/api/server.conf'
 export default {
   data() {
     return {
@@ -110,6 +113,19 @@ export default {
     // 鼠标离开
     handleMouseOut: function (row, column, cell, event) {
       cell.children[0].style.color = "black";
+    },
+    exportExcel() {
+      // let _this = this
+      console.log(uExportExcel)
+      let options = {
+        captions: ['告警详情', '告警处理建议'],
+        columns: ['ALARM_DETAIL_INFO', 'HANDLINGSUGGESTION'],
+        url: uExportExcel.url,
+        method: uExportExcel.method,
+        condition: ['121'],
+        fileName: "当前告警"
+      }
+      Excel(options)
     }
   },
   mounted() {

@@ -3,6 +3,11 @@ import {baseHref} from './server.ip'
 function resorve(path) {
   return baseHref + path
 }
+// 导出自定义表格
+export let uExportExcel = {
+  url: resorve('/api/exportExcel'),
+  method: 'POST'
+}
 
 export default {
   apiHref: baseHref,
@@ -35,5 +40,5 @@ export default {
   uGetTableList: {
     url: resorve('/api/tableList'),
     method: 'GET'
-  }
+  },
 }

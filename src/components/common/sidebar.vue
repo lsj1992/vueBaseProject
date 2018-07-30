@@ -35,6 +35,11 @@ export default {
           title: '系统首页'
         },
         {
+          icon: 'el-icon-setting',
+          index: 'todoList',
+          title: 'todoList'
+        },
+        {
           icon: 'el-icon-date',
           index: '3',
           title: 'vue-route的使用',
@@ -89,6 +94,10 @@ export default {
             {
               index: 'tableDemo',
               title: '表格示例'
+            },
+            {
+              index: 'ExportTable',
+              title: '导出表格'
             }
           ]
         }

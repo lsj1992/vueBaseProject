@@ -23,7 +23,7 @@ export default {
         // el: 指令所绑定的元素，可以用来直接操作 DOM 。
         console.log(binding);
         console.log("bind");
-        el.style = "color:" + binding.value;
+        el.style = "color:" + '#000';
       },
       // inserted: 被绑定元素插入父节点时调用（父节点存在即可调用，不必存在于 document 中）
       inserted: function () {
