@@ -6,7 +6,7 @@ import Cookies from 'js-cookie'
 let cancel = {}
 let promiseArr = {}
 const CancelToken = axios.CancelToken
-const AccessToken = Cookies.get('AccessToken')
+const AccessToken = Cookies.get('Tescomm_Access_Token')
 // 请求拦截器
 axios.interceptors.request.use(config => {
   // 发起请求时，取消掉当前正在进行的相同请求
@@ -80,7 +80,7 @@ axios.defaults.baseURL = '/'
 // axios.defaults.headers = {
 //   'X-Requested-With': 'XMLHttpRequest'
 // }
-axios.defaults.headers.common['AccessToken'] = AccessToken
+axios.defaults.headers.common['Tescomm_Access_Token'] = AccessToken
 
 axios.defaults.timeout = 20000
 
