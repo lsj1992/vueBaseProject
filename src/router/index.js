@@ -39,6 +39,16 @@ export default new Router({
           }
         },
         {
+          path: 'digui',
+          name: 'digui',
+          component: resolve => require(['#/user/diguiParent.vue'], resolve),
+          meta: {
+            title: 'DiGui',
+            isUseCache: false,
+            keepAlive: false
+          }
+        },
+        {
           path: '/routeParams',
           name: 'routeParams',
           component: resolve => require(['#/route/routeParams.vue'], resolve),

@@ -130,7 +130,7 @@ export default {
       })
     })
   },
-  ajax(baseMsg, param) {
+  ajax(baseMsg, param, conf) {
     return new Promise((resolve, reject) => {
       let msd = baseMsg['method'] ? baseMsg['method'] : 'GET'
       let url = baseMsg['url']
@@ -138,6 +138,8 @@ export default {
         axios({
           method: msd,
           url,
+          params: param,
+          conf,
           cancelToken: new CancelToken(c => {
             cancel = c
           })
@@ -151,6 +153,7 @@ export default {
           method: msd,
           url,
           data: param,
+          conf,
           cancelToken: new CancelToken(c => {
             cancel = c
           })

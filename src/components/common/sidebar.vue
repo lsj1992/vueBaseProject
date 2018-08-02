@@ -40,6 +40,11 @@ export default {
           title: 'todoList'
         },
         {
+          icon: 'el-icon-setting',
+          index: 'digui',
+          title: '递归组件的使用'
+        },
+        {
           icon: 'el-icon-date',
           index: '3',
           title: 'vue-route的使用',

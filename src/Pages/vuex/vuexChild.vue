@@ -3,7 +3,7 @@
     <h3 class="h_h3">vuexChild组件</h3>
     <div class="vuex_child">
       <ul>
-        <li>这是testComputed的值：{{testComputed}}</li>
+        <li>这是testComputed的值：{{testComputed | reverseStr}}</li>
         <li>这是 mapState 中 testState的值：{{testState}}</li>
         <li>这是 mapState 中 testAge的值：{{testAge}}</li>
         <li>这是 mapGetters 中的 getTestState {{getTestState}}</li>
@@ -12,6 +12,10 @@
           id: {{getMsgData.id}}, name: {{getMsgData.name}}, sex: {{getMsgData.sex}}
         </li>
       </ul>
+      <p>{{dataObj.name}}</p>
+      <p>{{newObg.name}}</p>
+      <el-button @click="age = '王五'">直接改变父属性</el-button>
+      <el-button @click="newObg.name = 'lisi'">改变</el-button>
     </div>
   </div>
 </template>
@@ -20,6 +24,7 @@
 // import { mapGetters, mapMutations, mapActions } from 'vuex'
 import { mapState, mapGetters, mapMutations, mapActions } from 'vuex'
 export default {
+  props: ['dataObj', 'age'],
   computed: {
     ...mapState('vuexTest', ['testState', 'testAge']),
     // ...mapState('vuexTest', {
@@ -33,6 +38,7 @@ export default {
   },
   data() {
     return {
+      newObg: this.dataObj
     };
   },
   created() {

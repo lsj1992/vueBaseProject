@@ -41,4 +41,9 @@ export default {
     url: resorve('/api/tableList'),
     method: 'GET'
   },
+  // 测试反向代理http://10.4.0.37:1338
+  getAreaList: {
+    url: resorve('/Base_area/getAreaList'),
+    method: 'GET'
+  },
 }

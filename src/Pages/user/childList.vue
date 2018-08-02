@@ -7,7 +7,7 @@
             v-for="todo in todos"
             :key="todo.id"
           >
-           {{todo.title}}
+           <!-- {{todo.title}} -->
             <!-- 我们为每个 todo 准备了一个插槽，-->
             <!-- 将 `todo` 对象作为一个插槽的 prop 传入。-->
             <slot :todo="todo" :names='names'>

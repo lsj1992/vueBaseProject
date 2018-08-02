@@ -7,12 +7,13 @@
           <template slot-scope="slotProps">
             <!-- 为待办项自定义一个模板，-->
             <!-- 通过 `slotProps` 定制每个待办项。-->
-            <div v-if="slotProps.todo.isComplete">
+            <!-- <div v-if="slotProps.todo.isComplete">
               {{ slotProps.todo.title }}
             </div>
-            <div>{{ slotProps.names[0] }}</div>
+            <div>{{ slotProps.names[0] }}</div> -->
           </template>
       </child-list>
+      <el-button @click="getData">调用数据</el-button>
       </el-col>
     </el-row>
   </div>
@@ -72,6 +73,9 @@ export default {
     }
   },
   methods: {
+    getData() {
+      this.http.ajax(this.API.getAreaList, {name: 'lsj', hello: 'word'})
+    },
     handleJoinPeople(data) {
       console.log(data)
     }

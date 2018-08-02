@@ -17,7 +17,7 @@
       <el-button @click="getAjaxData({})">调用mutions中的getAjaxData参数年龄是{}空对象五秒钟后返回数据</el-button>
     </div>
 
-    <vuex-child></vuex-child>
+    <vuex-child :data-obj="obj" :age="age"></vuex-child>
   </div>
 </template>
 
@@ -37,6 +37,10 @@ export default {
   },
   data() {
     return {
+      obj: {
+        name: 'zhangsan'
+      },
+      age: 199
     }
   },
   created() {
