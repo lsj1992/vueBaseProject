@@ -130,7 +130,7 @@ export default {
       })
     })
   },
-  ajax(baseMsg, param, conf) {
+  ajax(baseMsg, param) {
     return new Promise((resolve, reject) => {
       let msd = baseMsg['method'] ? baseMsg['method'] : 'GET'
       let url = baseMsg['url']
@@ -139,7 +139,6 @@ export default {
           method: msd,
           url,
           params: param,
-          conf,
           cancelToken: new CancelToken(c => {
             cancel = c
           })

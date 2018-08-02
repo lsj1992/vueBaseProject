@@ -17,6 +17,13 @@ module.exports = {
         pathRewrite: {
           '^/api/': ''
         }
+      },
+      '/Base_area/': {
+        target: 'http://10.4.0.37:1338',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/Base_area/': '/Base_area/'
+        }
       }
     },
 
