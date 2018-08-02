@@ -6,7 +6,7 @@ import Cookies from 'js-cookie'
 let cancel = {}
 let promiseArr = {}
 const CancelToken = axios.CancelToken
-const AccessToken = Cookies.get('AccessToken')
+const AccessToken = Cookies.get('Tescomm_Access_Token')
 // 请求拦截器
 axios.interceptors.request.use(config => {
   // 发起请求时，取消掉当前正在进行的相同请求
@@ -76,11 +76,11 @@ axios.interceptors.response.use(response => {
 // 它可以通过设置一个 `baseURL` 便于为 axios 实例的方法传递相对 URL , 如果传递的是绝对路径，则以传入的为主
 axios.defaults.baseURL = '/'
 // 设置默认请求头
-// axios.defaults.headers['Content-Type'] = 'application/json'
+axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded'
 // axios.defaults.headers = {
 //   'X-Requested-With': 'XMLHttpRequest'
 // }
-axios.defaults.headers.common['AccessToken'] = AccessToken
+axios.defaults.headers.common['Tescomm_Access_Token'] = AccessToken
 
 axios.defaults.timeout = 20000
 
@@ -121,7 +121,7 @@ export default {
       axios({
         method: 'POST',
         url,
-        params: param,
+        data: param,
         cancelToken: new CancelToken(c => {
           cancel = c
         })
@@ -138,6 +138,7 @@ export default {
         axios({
           method: msd,
           url,
+          params: param,
           cancelToken: new CancelToken(c => {
             cancel = c
           })
