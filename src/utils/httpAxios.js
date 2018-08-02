@@ -152,7 +152,6 @@ export default {
           method: msd,
           url,
           data: param,
-          conf,
           cancelToken: new CancelToken(c => {
             cancel = c
           })
