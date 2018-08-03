@@ -5,7 +5,7 @@ function resorve(path) {
 }
 // 导出自定义表格
 export let uExportExcel = {
-  url: resorve('/api/exportExcel'),
+  url: resorve('/WorkDetailInfo/Work_detail_info/excel'),
   method: 'POST'
 }
 

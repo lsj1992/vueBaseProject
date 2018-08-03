@@ -24,6 +24,14 @@ module.exports = {
         pathRewrite: {
           '^/Base_area/': '/Base_area/'
         }
+      },
+      // 导出excel彦珍本地服务接口
+      '/WorkDetailInfo/': {
+        target: 'http://10.4.0.77:1335',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/WorkDetailInfo/': '/WorkDetailInfo/'
+        }
       }
     },
 
